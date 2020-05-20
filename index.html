@@ -1,31 +1,55 @@
+<!--Designed by Elijah-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>This is my first JS exercise</title>
-	<style>
-	input, button {
-	padding: 10px 24px;
-	}
-	</style>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+	<link rel="stylesheet" href="fontawesome/css/all.css">
+	<link rel="stylesheet" href="stye.css">
+</head>
 <body>
-Open Your editor to see instructions to help you view code
-<!--Remove this comment if you are to view ex35.js
-<h2>Open Developer Tools (console)</h2>
-
-<script src="ex35.js">
-</script>
--->
- <!--Remove this comment if you are to view ex37.js
-<script src="ex37.js"> </script>
--->
-<!--
-Remove this comment if you are to view ex38.js
-<br><br>
-<input type="text" id="input" placeholder="Input your id">
-<button id="button">Submit</button>
-<script src="ex38.js"></script>
--->
+<div class="container">
+	<div class="list-wrapper">
+		<div class="header">
+			<h2>To Do List</h2>
+		</div>
+		<div class="view">This to-do list is yet to be available for your device width.<br>
+			If you are on a pc, resize your window (to below width: 750px);<br>
+			or simply
+			Visit 
+			<a href="https://github.com/elijah-trillionz/my-progress">my githb repository</a> to check for updates
+		</div>
+		<div class="content">
+			<div class="default">
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+				<p style="border-bottom: 1px solid #292828;"></p>
+			</div>
+			<div class="footer">
+				<div class="modal">
+					
+						<div class="inputForm">
+							<input type="text" id="input" placeholder="Add a task" oninput="disabledFunction()">
+						</div>
+						<button id="button" onclick="createNewElement()" disabled>
+							<i class="fas fa-paper-plane" style=" font-size: 28px;" ></i>
+						</button>
+					
+				</div>
+				<div class="inputClick" onclick="inputClick()">
+					<i class="fas fa-plus-alt"><br>
+					<img src="signs.png" height="20px">
+					</i>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="app.js"></script>
+<noscript>dude get a latest browser..</noscript>
 </body>
 </html>
