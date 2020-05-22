@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fontawesome/css/all.css">
+</head>
+<body>
+<h2>Find out if you are using an old or modern computer</h2>
+<button onclick="myFunction()">Check</button>
+<p id="val"></p>
+<script>
+let txt;
+function myFunction() {
+		console.log(navigator.platform)
+		switch (screen.colorDepth) {
+				case 32:
+				case 24:
+				  txt = `You are using a modern Computer, nice!!🥰`;
+				break;
+				case 16:
+				  txt = 'You are using an old computer, hmmm!!🙄';
+				break;
+				case 8:
+				  txt = 'You are using a super old computer, throw it away!!! 😂'
+				break;
+				default:
+				   txt = 'Unkown version of Computer';
+			 }
+			 document.getElementById('val'). innerHTML = txt;
+}
+</script>
+</body>
+</html>

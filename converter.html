@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            padding: 19px;
+        }
+        input {
+            max-width: 140px;
+            padding: 12px 17px;
+            margin: 4px;
+        }
+        button {
+            max-width: 160px;
+            padding: 12px 11px;
+            margin: 7px;
+        }
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Converting From Pixels(px)</h2>
+        <span>From:</span>
+        <input type="text" placeholder="Input Pixel(px) Value">px <br>
+        <p></p>
+        <button onclick="fromPxToPt()">To Points(pt)</button>
+        <button onclick="fromPxToPc()">To Picas(pc)/em</button>
+        <br>
+        <h2>Converting From Points(pt)</h2>
+        <span>From:</span>
+        <input type="text"placeholder="Input Points(pt) Value">pt <br>
+        <p></p>
+        <button onclick="fromPtToPx()">To Pixels(px)</button>
+        <button onclick="fromPtToPc()">To Picas(pc)/em</button>
+        <br>
+        <h2>Converting From Picas(pc) or em</h2>
+        <span>From:</span>
+        <input type="text" placeholder="Input Picas(pc)/em Value">pc/em <br>
+        <p></p>
+        <button onclick="fromPcToPx()">To Pixels(px)</button>
+        <button onclick="fromPcToPt()">To Points(pt)</button>
+        <br>
+    </div>
+    <script>
+        const inputs = document.getElementsByTagName('input');
+        const paras = document.getElementsByTagName('p');
+        const input = inputs[0] || inputs[1] ||  inputs[2];
+        alert(input);
+        
+        if (isNaN(input.value)) {
+          return alert('Wrong Input: Numbers only');
+        } else {
+        //from pixels to point
+        function fromPxToPt() { //a px makes 0.75pt 
+            return paras[0].innerHTML = `${inputs[0].value * 0.75}pt`;
+        }
+        //from pixels to picas
+        function fromPxToPc() { //16px make a pc
+            return paras[0].innerHTML = `${inputs[0].value / 16}pc/em`;
+        }
+        //from point to pixel
+        function fromPtToPx() { //0.75pt make a pixel
+            return paras[1].innerHTML = `${inputs[1].value / 0.75}px`;
+        }
+        //from point to picas
+        function fromPtToPc() { //12pt make a pc
+            return paras[1].innerHTML = `${inputs[1].value / 12}pc/em`
+        }
+        //from picas to pixel
+        function fromPcToPx() { //16px make a pt
+            return paras[2].innerHTML = `${inputs[2].value * 16}px`
+        }
+        // from picas to point
+        function fromPcToPt() {
+            return paras[2].innerHTML = `${inputs[2].value * 12}pt`
+        }
+}
+    </script>
+</body>
+</html>
