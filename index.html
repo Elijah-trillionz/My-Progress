@@ -1,31 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>This is my first JS exercise</title>
-	<style>
-	input, button {
-	padding: 10px 24px;
-	}
-	</style>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.container {
+		background-color: #3caf50;
+		width: 430px;
+		height: 330px;
+		position: relative;
+		margin: auto;
+}
+.head {
+		position: absolute;
+		top: 10.5%;
+		left: 20%;
+		width: 60%;
+		height: 79%;
+		background-color: rgb(170,20,10);
+		border-radius: 50%;
+}
+.head-copy {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background: rgb(255,100,90);
+		border-radius: 50%;
+}
+.left-ear {
+		position: absolute;
+		top: 1%;
+		left: -10%;
+		background: rgb(215,20,10);
+		width: 26%;
+		height: 30%;
+		border-radius: 50%;
+		border: 9px solid rgb(255,100,90);
+		z-index: 1;
+}
+.right-ear {
+		position: absolute;
+		top: 1%;
+		right: -10%;
+		background: rgb(215,20,10);
+		width: 26%;
+		height: 30%;
+		border-radius: 50%;
+		border: 9px solid rgb(255,100,90);
+		z-index: 1;
+}
+.left-eye {
+		position: absolute;
+		top: 23%;
+		left: 22.6%;
+		width: 8%;
+		height: 8%;
+		background: black;
+		border: 26px solid white;
+		border-radius: 50%;
+		z-index: 2;
+}
+.right-eye {
+		position: absolute;
+		top: 23%;
+		right: 22.6%;
+		width: 8%;
+		height: 8%;
+		background: black;
+		border: 26px solid white;
+		border-radius: 50%;
+		z-index: 2;
+}
+.nose {
+		position: absolute;
+		top: 42%;
+		left: 38.5%;
+		width: 23%;
+		height: 40%;
+		background: grey;
+		border-radius: 30px;
+		z-index: 2;
+}
+.left-hair {
+		position: absolute;
+		top: -4.5%;
+		left: 36%;
+		width: 10%;
+		height: 10%;
+		background: rgb(255,100,90);
+		-webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		z-index: 2;
+}
+.right-hair {
+		position: absolute;
+		top: -7%;
+	 right: 36%;
+		width: 10%;
+		height: 10%;
+		background: rgb(255,100,90);
+		-webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		z-index: 2;
+}
+.smile {
+		position: absolute;
+		top: 90%;
+		left: 30%;
+		width: 40%;
+		height: 1.92%;
+		background: yellow;
+		-webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+		clip-path: polygon(0% 100%, 100% 100%, 0% 50%);
+		z-index: 2;
+}
+</style>
+</head>
 <body>
-Open Your editor to see instructions to help you view code
-<!--Remove this comment if you are to view ex35.js
-<h2>Open Developer Tools (console)</h2>
-
-<script src="ex35.js">
-</script>
--->
- <!--Remove this comment if you are to view ex37.js
-<script src="ex37.js"> </script>
--->
-<!--
-Remove this comment if you are to view ex38.js
-<br><br>
-<input type="text" id="input" placeholder="Input your id">
-<button id="button">Submit</button>
-<script src="ex38.js"></script>
--->
+<div class="container">
+<div class="head">
+<div class="head-copy"></div>
+<div class="left-ear"></div>
+<div class="right-ear"></div>
+<div class="left-eye"></div>
+<div class="right-eye"></div>
+<div class="nose"></div>
+<div class="left-hair"></div>
+<div class="right-hair"></div>
+<div class="smile"></div>
+</div>
+</div>
 </body>
 </html>
