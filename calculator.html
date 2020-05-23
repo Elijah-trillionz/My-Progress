@@ -1,0 +1,159 @@
+<!--Developed by Elijah Trillionz. Twitter @elijahtrillionz -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 49px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type=text] {
+            padding: 10px 20px;
+            margin-left: 4px;
+            width: 249px;
+            min-width: 160px;
+            background-color: rgba(20,10,210,.8);
+            color: white;
+            font-size: 18px;
+            border: 2px solid rgba(20,10,210,.8);
+            border-radius: 5px;
+        }
+        input[type=button] {
+            padding: 6px 20px;
+            border-radius: 4px;
+        }
+        input[type=button]:focus {
+            outline: none;
+            box-shadow: 1px 1px 1px 2px #ccc;
+        }
+        input[value='DEL'] {
+            padding-left: 6.5px;
+            padding-right: 6.5px;
+            font-size: 20px;
+            background-color: red;
+            color: white;
+            border: 2px solid red;
+        }
+        input[value='AC'] {
+            padding-left: 9.5px;
+            padding-right: 9.5px;
+            font-size: 20px;
+            background-color: red;
+            color: white;
+            border: 2px solid red;
+        }
+        input[value='='] {
+            padding-left: 18px;
+            padding-right: 18px;
+            font-size: 20px;
+            background-color: #3caf50;
+            color: white;
+            border: 2px solid #3caf50;
+        }
+        
+        input[value='.'] {
+            padding-right: 22px;
+            padding-left: 22px;
+            font-size: 20px;
+        }
+        input[value="÷"] {
+             padding-left: 16px;
+             padding-left: 16px;
+        }
+        input[value='+'], input[value='e'], input[value='R'], input[value='-'], input[value='÷'], input[value='×'] {
+            font-size: 20px;
+            background-color: rgba(20,10,210,.8);
+            color: white;
+            border: 2px solid rgba(20,10,210,.8);
+        }
+        input[id='num'] {
+            color: white;
+            background-color: black;
+            border: 1px solid black;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+        /*
+        input[value='+'], , input[value='%'] {
+            padding-left: 23px;
+            padding-right: 23px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculate">
+    <table cellpadding='1px'>
+    <form name="formss">
+        <th><td>
+        <tr colspan="5"><input type="text" id="input" oninput="click()" name="input" disabled></tr>
+        </td></th>
+            <tr>
+                <td><input type="button" id="num" onclick="formss.input.value += '1'" value="1"></td>
+                <td><input type="button" id="num" onclick="formss.input.value += '2'" value="2"></td>
+                <td><input type="button" id="num" onclick="formss.input.value += '3'" value="3"></td>
+                <td><input type="button" onclick="formss.input.value = formss.input.value.substr(0, formss.input.value.length - 1)" value="DEL"></td>
+                <td><input type="button" onclick="formss.input.value = ''" value="AC"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="num" onclick="formss.input.value += '4'" value="4"></td>
+                <td><input type="button" id="num" onclick="formss.input.value += '5'" value="5"> </td>
+                <td><input type="button" id="num" onclick="formss.input.value += '6'" value="6"> </td>
+                <td><input type="button" onclick="formss.input.value += '+'" value="+"></td>
+                <td><input type="button" onclick="formss.input.value += '-'" value="-"> </td>
+            </tr>
+            <tr>
+                <td><input type="button" id="num" onclick="formss.input.value += '7'" value="7"></td>
+                <td><input type="button" id="num" onclick="formss.input.value += '8'" value="8"> </td>
+                <td><input type="button" id="num" onclick="formss.input.value += '9'" value="9"> </td>
+                <td><input type="button" id='star' onclick="formss.input.value += '*'" value="×"> </td>
+                <td><input type="button" onclick="formss.input.value += '/'" value="÷"> </td>
+            </tr>
+            <tr>
+                <td><input type="button" id="num" onclick="formss.input.value += '.'" value="."></td>
+                <td><input type="button" id="num" onclick="formss.input.value += '0'" value="0"> </td>
+                <td><input type="button" onclick="formss.input.value += 'e'" value="e"> </td>
+                <td><input type="button" onclick="formss.input.value += '%'" value="R"> </td>
+                <td><input type="button" onclick="calculate()" value="="> </td>
+            </tr>
+            <!--  -->
+            <!--
+             -->
+    </form>
+</table>
+</div>
+    </div>
+    <script>
+        function calculate() {
+        const form = document.forms['formss'];
+        const input = document.getElementById('input');
+        try {
+            if (eval(form.input.value) === Infinity || eval(form.input.value) === -Infinity || eval(form.input.value) === undefined) {
+            form.input.value = 'Syntax Error'; setTimeout(() => {
+            form.input.value = '';
+        }, 1000);
+    } else {
+            form.input.value = eval(form.input.value);
+        }
+    }
+        catch(err) {
+            form.input.value = 'Syntax Error';
+            console.log(err.message + ' ' + err.name);
+            setTimeout(() => {
+            form.input.value = '';
+        }, 1000);
+        }
+    }
+        
+    </script>
+</body>
+</html>
