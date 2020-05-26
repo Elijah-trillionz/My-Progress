@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My First Javascript CountDown</title>
+<style>
+.container {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.arrow {
+	text-align: center;
+	transform: translate(0%, -40%);
+	-webkit-transform: translate(0%, -40%);
+	background: blue;
+	color: white;
+	border-radius: 10px;
+	animation: move 1s linear infinite;
+	-webkit-animation: move 0.3s linear infinity;
+}
+@-webkit-keyframes move {
+	0% {background: blue; transform: translate(0%, -40%)}
+	50% {background: red; transform: translate(0%, 90%)}
+	100% {transform: translate(0%, -40%)}
+}
+@keyframes move {
+	0% {background: blue; transform: translate(0%, -40%)}
+	50% {background: red; transform: translate(0%, 90%)}
+	100% {transform: translate(0%, -40%)}
+}
+p {
+		font-size: 35px;
+		font-weight: bolder;
+}
+.inputBtn {
+	text-align: center;
+	transform: translate(0%, 100%);
+	display: flex;
+	justify-content: space-around;
+}
+input {
+	padding: 7px 6px;
+}
+input:focus {
+	outline-color: blue;
+}
+.sub {
+	display: block;
+	transform: translate(0%, 50%);
+}
+input[type="submit"] {
+	width: 100%;
+	padding: 5px 10px;
+	border-radius: 5px;
+	background: #ccc;
+	border: 1px solid #ccc;
+	font-size: 15px;
+	cursor: pointer;
+}
+input[type="submit"]:focus {
+	outline: none;
+}
+.first-div {
+	background-color: red;
+	padding: 10px;
+	margin: 5px;
+	color: white;
+	display: none;
+}
+.sec-div {
+	background-color: blue;
+	padding: 8px 20px;
+	margin: 5px;
+	border: 12px solid white;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="content">
+		<h2 style="text-align: center;">Countdown to Your Birthday</h2>
+		<div class="arrow" onclick="stop()">
+			<p class="">&#10597;</p>
+		</div>
+		<div class="inputBtn"><br><br>
+			<input type="number" oninput="monthInput()" placeholder="Month">
+			<input type="number" oninput="dayInput()" placeholder="Day">
+		</div>
+		<div class="sub"><br>
+			<input type="submit" onclick="countdown()" value="Submit">
+		</div><br><br>
+		<div class="msg" style="text-align: center;"></div>
+		<div class="result"></div>
+	</div>
+</div>
+<script>
+const input = document.querySelectorAll('input');
+const msg = document.querySelector('.msg');
+const arrow = document.querySelector('.arrow');
+const result = document.querySelector('.result');
+
+//creating elements
+const firstDiv = document.createElement('div');
+const secDiv = document.createElement('span');
+const minDiv = document.createElement('span');
+const hourDiv = document.createElement('span');
+const dayDiv = document.createElement('span');
+
+//assign attributes
+firstDiv.setAttribute('class', 'first-div');
+secDiv.setAttribute('class', 'sec-div');
+minDiv.setAttribute('class', 'sec-div');
+hourDiv.setAttribute('class', 'sec-div');
+dayDiv.setAttribute('class', 'sec-div');
+
+// append respectively;
+result.appendChild(firstDiv);
+firstDiv.appendChild(dayDiv);
+firstDiv.appendChild(hourDiv);
+firstDiv.appendChild(minDiv);
+firstDiv.appendChild(secDiv);
+
+arrow.addEventListener('dblclick', start)
+function stop() {
+	arrow.style.animation = "none";
+}
+function start() {
+	arrow.style.animation = "move 0.8s linear infinite";
+}
+input[2].setAttribute('disabled', 'true');
+input[1].setAttribute('disabled', 'true');
+
+//validating user's input
+function monthInput() {
+	input[0].style.outlineColor = "green";
+	if (input[0].value > 12 || input[0].value < 1) {
+		input[0].style.outlineColor = "red";
+		input[1].setAttribute('disabled', 'true')
+	} else {
+		input[0].style.outlineColor = "green";
+		input[1].removeAttribute('disabled')
+	}
+}
+
+//validating user's input
+function dayInput() {
+	input[1].style.outlineColor = "green";
+	if (input[1].value > 31 || input[1].value < 1) {
+		input[1].style.outlineColor = "red";
+		input[2].setAttribute('disabled', 'true')
+	} else {
+		input[1].style.outlineColor = "green";
+		input[2].removeAttribute('disabled')
+	}
+}
+
+function countdown() {
+	firstDiv.style.display = 'flex';
+	let day = new Date();
+	var t;
+		//get user's birthday
+	const aDay = 86400000;
+		let birthday = new Date(day.getFullYear(), (input[0].value - 1), input[1].value, day.getHours(), day.getMinutes(), day.getSeconds(), day.getMilliseconds());
+		console.log(birthday.getDate())
+	if ((day.getDate() >= birthday.getDate() && day.getMonth() >= birthday.getMonth()) || day.getDate() <= birthday.getDate() && day.getMonth() > birthday.getMonth()) {
+		birthday = new Date((day.getFullYear() + 1), (input[0].value - 1), input[1].value, day.getHours(), day.getMinutes(), day.getSeconds(), day.getMilliseconds());
+		msg.innerHTML = `Your next birthday falls in ${day.getFullYear() +1}(next year)`;
+};
+	
+	console.log(birthday.getTime())
+	// setInterval(count, 1000)
+		// customize a decreasing timing function
+	function count() {
+		//creating elements
+		input[0].setAttribute('disabled', 'true');
+	     input[1].setAttribute('disabled', 'true');
+	     
+		let day = new Date();
+		const days = Math.ceil((birthday.getTime() - day.getTime())/aDay);
+		let seconds = day.getSeconds();
+		let minutes = day.getMinutes();
+		let hours = day.getHours();
+			hours -= 23;
+			minutes -= 59;
+			seconds -= 59;
+		let newMinValue;
+			if (-minutes < 10) {
+				newMinValue = `0${-minutes}`;
+			} else {
+				newMinValue = `${-minutes}`;
+			}
+		let newSecValue;
+			if (-seconds < 10){
+				newSecValue = `0${-seconds}`;
+			} else {
+				newSecValue = `${-seconds}`;
+			}
+	dayDiv.innerHTML = `${days}d`;
+	hourDiv.innerHTML = `${-hours}h`;
+	minDiv.innerHTML = `${newMinValue}m`;
+	secDiv.innerHTML = `${newSecValue}s`;
+	t = setTimeout(count, 1000);
+	// if (days < 0 && -hours < 0 && -minutes < 0 && -seconds < 0) {
+	// 	clearInterval(t);
+	// 	alert('EXPIRED')
+	// }
+	}
+	count()
+	
+	input[2].setAttribute('value', 'Stop');
+	input[2].addEventListener('dblclick', clearer)
+	function clearer() {
+	     input[2].setAttribute('value', 'Resume');
+		 clearTimeout(t);
+	}
+	console.log(t)
+}
+</script>
+</body>
+</html>
